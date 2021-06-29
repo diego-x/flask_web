@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<!-- saved from url=(0024)https://pic.netbian.com/ -->
+<html data-redeviation-bs-uid="102485">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <title>壁纸</title>
+  <meta name="keywords" content="">
+  <meta name="description"
+    content="aaa">
+  <link href="/static/user/bizhi/style.css" rel="stylesheet" type="text/css">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <script src="/static/user/bizhi/hm.js"></script>
+  <script src="/static/user/bizhi/hm.js"></script>
+  <script type="text/javascript" src="/static/user/bizhi/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/user/bizhi/common.js"></script>
+  <script src="/static/user/bizhi/jquery.SuperSlide.js"></script>
+  <meta property="qc:admins" content="51744610136654211663757">
+  <style class="redeviation-bs-style" data-name="content">
+    /*! (c) Philipp K&#246;nig under GPL-3.0 */
+    body>div#redeviation-bs-indicator>div {
+      opacity: 0;
+      pointer-events: none
+    }
+
+    body>iframe#redeviation-bs-sidebar.redeviation-bs-visible,
+    body>iframe#redeviation-bs-overlay.redeviation-bs-visible {
+      opacity: 1;
+      pointer-events: auto
+    }
+    
+    body.redeviation-bs-noscroll {
+      overflow: hidden !important
+    }
+    
+    body>div#redeviation-bs-indicator>div {
+      position: absolute;
+      transform: translate3d(-24px, 0, 0);
+      top: 0;
+      left: 0;
+      width: 24px !important;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 0 10px 10px 0;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 2
+    }
+    
+    body>div#redeviation-bs-indicator>div>span {
+      -webkit-mask: no-repeat center/24px;
+      -webkit-mask-image: url(chrome-extension://jdbnofccmhefkmjbkkdkfiicjkgofkdh/img/icon-bookmark.svg);
+      background-color: #ffffff;
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%
+    }
+    
+    body>div#redeviation-bs-indicator[data-pos='right'] {
+      left: auto;
+      right: 0
+    }
+    
+    body>div#redeviation-bs-indicator[data-pos='right']>div {
+      transform: translate3d(24px, 0, 0);
+      left: auto;
+      right: 0;
+      border-radius: 10px 0 0 10px
+    }
+    
+    body>div#redeviation-bs-indicator.redeviation-bs-fullHeight>div {
+      border-radius: 0
+    }
+    
+    body>div#redeviation-bs-indicator.redeviation-bs-hover>div {
+      transform: translate3d(0, 0, 0);
+      opacity: 1
+    }
+    
+    body>div#redeviation-bs-indicator[data-pos='left'].redeviation-bs-has-lsb {
+      height: 100% !important;
+      top: 0 !important
+    }
+    
+    body>div#redeviation-bs-indicator[data-pos='left'].redeviation-bs-has-lsb>div {
+      background: transparent
+    }
+    
+    body>div#redeviation-bs-indicator[data-pos='left'].redeviation-bs-has-lsb>div>span {
+      -webkit-mask-position-y: 20px
+    }
+    
+    body>iframe#redeviation-bs-sidebar {
+      width: 350px;
+      max-width: none;
+      height: 0;
+      z-index: 2147483646;
+      background-color: rgba(0, 0, 0, 0.6) !important;
+      color-scheme: normal !important;
+      speak: none;
+      border: none;
+      display: block !important;
+      transform: translate3d(-350px, 0, 0);
+      transition: width 0s 0.3s, height 0s 0.3s, opacity 0.3s, transform 0.3s
+    }
+    
+    body>iframe#redeviation-bs-sidebar[data-pos='right'] {
+      left: auto;
+      right: 0;
+      transform: translate3d(350px, 0, 0)
+    }
+    
+    body>iframe#redeviation-bs-sidebar.redeviation-bs-visible {
+      width: calc(100% + 350px);
+      height: 100%;
+      transform: translate3d(0, 0, 0);
+      transition: opacity 0.3s, transform 0.3s
+    }
+    
+    body>iframe#redeviation-bs-sidebar.redeviation-bs-hideMask {
+      background: none !important
+    }
+    
+    body>iframe#redeviation-bs-sidebar.redeviation-bs-hideMask:not(.redeviation-bs-hover) {
+      width: calc(350px + 50px)
+    }
+    
+    body>iframe#redeviation-bs-overlay {
+      width: 100%;
+      max-width: none;
+      height: 100%;
+      z-index: 2147483647;
+      border: none;
+      speak: none;
+      background: rgba(0, 0, 0, 0.5) !important;
+      transition: opacity 0.3s
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="head">
+      <ul class="nav">
+        <li><a href="/user/index/1" class="nav-link" rel="nofollow">首页</a></li>
+      </ul>
+
+      <div class="loginbar">
+        
+        {% if username != "" %}
+            <a class="register" style="width:100px;">hello , {{username}}</a> <a class="in" href="/user/logout">退出</a>
+        {% else %}
+            <a class="register" style="width:100px;" href="/user/user_reg">注册</a> <a class="in" href="/user/user_login">登录</a>
+        {% endif %}
+        <div id="login_opacity_bg"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?526caf4e20c21f06a4e9209712d6a20e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <div class="wrap clearfix">
+    <div id="main">
+      <div class="slide">
+        <div class="tempWrap" style="overflow:hidden; position:relative; width:1200px">
+          <ul class="pic"
+            style="width: 7200px; position: relative; overflow: hidden; padding: 0px; margin: 0px; left: -2400px;">
+            <li class="clone" style="float: left; width: 1200px;"><a href=""
+                title="4" target="_blank"><img alt="4"
+                  src="/static/user/bizhi/110732ydz8r.jpg"></a></li>
+
+            <li style="float: left; width: 1200px;"><a href="" title="2" target="_blank"><img
+                  alt="2" src="/static/user/bizhi/234510b0acr.jpg"></a></li>
+            <li style="float: left; width: 1200px;"><a
+                href=""
+                title="3" target="_blank"><img alt="3"
+                  src="/static/user/bizhi/214956ShuTU.jpg"></a></li>
+            <li style="float: left; width: 1200px;"><a href="" title="4"
+                target="_blank"><img alt="4"
+                  src="/static/user/bizhi/110732ydz8r.jpg"></a></li>
+          </ul>
+        </div>
+        <a class="prev" href="javascript:void(0)" style="opacity: 1; display: none;"></a><a class="next"
+          href="javascript:void(0)" style="opacity: 1; display: none;"></a>
+        <ul class="hd">
+          <li class="">1</li>
+          <li class="on">2</li>
+          <li class="">3</li>
+          <li class="">4</li>
+        </ul>
+      </div>
+      <script>
+        /*鼠标移过，左右按钮显示*/
+        jQuery(".slide").hover(function () { jQuery(this).find(".prev,.next").stop(true, true).fadeTo("show", 1) }, function () { jQuery(this).find(".prev,.next").fadeOut() });
+        /*SuperSlide图片切换*/
+        jQuery(".slide").slide({ titCell: ".hd", mainCell: ".pic", effect: "leftLoop", autoPlay: true, delayTime: 200, switchLoad: "_src", autoPage: true, interTime: 20000 });
+      </script>
+
+      <div class="slist">
+        <ul class="clearfix">
+
+          {% for picture in pictures %}
+          <li><a onclick="window.location.href='/user/show/{{picture.picture_id}}'" title="{{picture.title}}"
+            target="_blank"><span><img
+                src="{{picture.index_src}}"
+                alt="{{picture.title}}"></span><b>{{picture.title}}</b></a></li>
+          {% endfor %}
+
+              <!-- <p>下一页<br>更多精彩</p> -->
+            </a></li>
+        </ul>
+      </div>
+      <div class="page">
+        {% for x in range(1,count+1) %}
+         <a href="/user/index/{{x}}">{{x}}</a>
+        {% endfor %}
+         <a id="next" href="" class="prev">下一页&gt;</a><span
+          class="text" id="count" >共{{count}}页&nbsp;&nbsp;到第</span><input type="text" name="page"><span>页</span><a href="javascript:;"
+          id="jump-url">确定</a>
+      <script>
+        if (parseInt(location.pathname.charAt(location.pathname.length - 1))  < {{count}} ){
+          document.getElementById("next").href = "/user/index/" + (parseInt(location.pathname.charAt(location.pathname.length - 1)) + 1);
+        }
+      </script>
+      </div>
+        </div></div></div>
+  <a href="javascript:;" class="btn-btn btn-top" style="display: none;"><i></i>顶部</a>
+  </div>
+  <script type="text/javascript" src="/static/user/bizhi/tb.js"></script>
+
+  <iframe id="redeviation-bs-sidebar" class="notranslate" aria-hidden="true" data-theme="default" data-pos="left"
+    src="/static/user/bizhi/saved_resource.html"></iframe>
+  <div id="redeviation-bs-indicator" data-theme="default" data-pos="left" class="redeviation-bs-visible"
+    style="height: 31%; top: 0%;">
+    <div><span></span></div>
+  </div>
+</body>
+
+</html>

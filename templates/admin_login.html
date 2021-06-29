@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<title>后台登录</title>
+
+<link rel="stylesheet" href="/static/admin/jiaoben7595/css/style.css">
+
+</head>
+<body>
+
+<div class="login-box">
+  <h2>管理员登录</h2>
+  <form action="get">
+    <div class="user-box">
+      <input type="text" name="" required="" id="username">
+      <label>用户名</label>
+    </div>
+    <div class="user-box">
+      <input type="password" name="" required="" id="password">
+      <label>密码</label>
+    </div>
+    <div id="captcha">
+        <p id="wait" class="show">正在加载验证码......</p>
+    </div>
+    <a href="#" onclick="toLogin()">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      登录
+    </a>
+  </form>
+</div>
+
+<script src="/static/user/js/jquery-3.3.1.min.js"></script>
+  	<!-- 引入 极验官方gt.js，使用其中提供的 initGeetest 初始化函数 -->
+	<script src="/static/code/js/gt.js"></script>
+
+	<script>
+		var handler = function (captchaObj) {
+			$("#submit").click(function (e) {
+				var result = captchaObj.getValidate();
+				if (!result) {
+					$("#notice").show();
+					setTimeout(function () {
+						$("#notice").hide();
+					}, 2000);
+					e.preventDefault();
+				}
+			});
+			// 将验证码加到id为captcha的元素里，同时会有三个input的值用于表单提交
+			captchaObj.appendTo("#captcha");
+			captchaObj.onReady(function () {
+				$("#wait").hide();
+			});
+		};
+		$.ajax({
+			url: "/code/register?t=" + (new Date()).getTime(), // 加随机数防止缓存
+			type: "get",
+			dataType: "json",
+			success: function (data) {
+				// 调用 initGeetest 初始化参数
+				// 参数1：配置参数
+				// 参数2：回调，回调的第一个参数验证码对象，之后可以使用它调用相应的接口
+				initGeetest({
+					gt: data.gt,
+					challenge: data.challenge,
+					new_captcha: data.new_captcha, // 用于宕机时表示是新验证码的宕机
+					offline: !data.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+					product: "float", // 产品形式，包括：float，popup
+					width: "100%"
+				}, handler);
+			}
+		});
+	</script>
+
+    <script>
+        function toLogin(){
+			var username = document.getElementById("username").value;
+			var password = document.getElementById("password").value;
+
+			if ($("input").length != 5){
+				alert('验证码错误')
+		
+			}else{
+				var geetest_challenge = $("input")["2"].value;
+				var geetest_validate = $("input")["3"].value;
+				var geetest_seccode = $("input")["4"].value;
+
+			}
+			
+			if(username == "" || password == ""){
+					alert("用户名或密码为空")
+			}else{
+                $.ajax({
+                        url : "/admin/admin_login",
+                        type : "POST",
+                        contentType: "application/x-www-form-urlencoded;charset=utf-8",
+                        data : {'username':username,'password':password , 
+                            "csrf_token" : '{{ csrf_token()}}',
+                            "geetest_challenge":geetest_challenge, 
+                            "geetest_validate":geetest_validate, 
+                            "geetest_seccode":geetest_seccode
+                        },
+                        dataType : "text",
+                        success : function(result) {
+                                //result=eval('(' + result + ')')
+                                if (result == "登录成功") {
+                                    alert("success")
+                                    location.href = "/admin/imageManager"
+                                }else {
+                                    alert("error")
+                                }
+                        },
+                        error:function(msg){
+                                alert('error');
+                                // location.href = "./user.html"
+                        }
+                    })
+			}
+			setTimeout(function(){
+				window.location.reload();
+			},3000);
+			return false;
+		}
+
+		
+    </script>
+</body>
+</html>

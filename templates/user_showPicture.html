@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://pic.netbian.com/tupian/27301.html -->
+<html data-redeviation-bs-uid="93273">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=GBK">
+
+  <title>{{picture.title}}</title>
+  <link href="/static/user/user_show_picture/style.css" rel="stylesheet" type="text/css">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <script src="/static/user/user_show_picture/hm.js"></script>
+  <script src="/static/user/user_show_picture/hm.js"></script>
+  <script type="text/javascript" src="/static/user/user_show_picture/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/user/user_show_picture/common.js"></script>
+  <script src="/static/admin/jiaoben7071/layer/layer.js"></script>
+  <script>
+    $(function () {
+      $('#img').click(function () {
+        $('a[data-id]').click();
+        return false;
+      });
+    });
+  </script>
+  <style class="redeviation-bs-style" data-name="content">
+    /*! (c) Philipp K&#246;nig under GPL-3.0 */
+    body>div#redeviation-bs-indicator>div {
+      opacity: 0;
+      pointer-events: none
+    }
+
+    body>iframe#redeviation-bs-sidebar.redeviation-bs-visible,
+    body>iframe#redeviation-bs-overlay.redeviation-bs-visible {
+      opacity: 1;
+      pointer-events: auto
+    }
+
+    body.redeviation-bs-noscroll {
+      overflow: hidden !important
+    }
+
+    body>div#redeviation-bs-indicator>div {
+      position: absolute;
+      transform: translate3d(-24px, 0, 0);
+      top: 0;
+      left: 0;
+      width: 24px !important;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 0 10px 10px 0;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 2
+    }
+
+    body>div#redeviation-bs-indicator>div>span {
+      -webkit-mask: no-repeat center/24px;
+      -webkit-mask-image: url(chrome-extension://jdbnofccmhefkmjbkkdkfiicjkgofkdh/img/icon-bookmark.svg);
+      background-color: #ffffff;
+      position: absolute;
+      display: block;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%
+    }
+
+    body>div#redeviation-bs-indicator[data-pos='right'] {
+      left: auto;
+      right: 0
+    }
+
+    body>div#redeviation-bs-indicator[data-pos='right']>div {
+      transform: translate3d(24px, 0, 0);
+      left: auto;
+      right: 0;
+      border-radius: 10px 0 0 10px
+    }
+
+    body>div#redeviation-bs-indicator.redeviation-bs-fullHeight>div {
+      border-radius: 0
+    }
+
+    body>div#redeviation-bs-indicator.redeviation-bs-hover>div {
+      transform: translate3d(0, 0, 0);
+      opacity: 1
+    }
+
+    body>div#redeviation-bs-indicator[data-pos='left'].redeviation-bs-has-lsb {
+      height: 100% !important;
+      top: 0 !important
+    }
+
+    body>div#redeviation-bs-indicator[data-pos='left'].redeviation-bs-has-lsb>div {
+      background: transparent
+    }
+
+    body>div#redeviation-bs-indicator[data-pos='left'].redeviation-bs-has-lsb>div>span {
+      -webkit-mask-position-y: 20px
+    }
+
+    body>iframe#redeviation-bs-sidebar {
+      width: 350px;
+      max-width: none;
+      height: 0;
+      z-index: 2147483646;
+      background-color: rgba(0, 0, 0, 0.6) !important;
+      color-scheme: normal !important;
+      speak: none;
+      border: none;
+      display: block !important;
+      transform: translate3d(-350px, 0, 0);
+      transition: width 0s 0.3s, height 0s 0.3s, opacity 0.3s, transform 0.3s
+    }
+
+    body>iframe#redeviation-bs-sidebar[data-pos='right'] {
+      left: auto;
+      right: 0;
+      transform: translate3d(350px, 0, 0)
+    }
+
+    body>iframe#redeviation-bs-sidebar.redeviation-bs-visible {
+      width: calc(100% + 350px);
+      height: 100%;
+      transform: translate3d(0, 0, 0);
+      transition: opacity 0.3s, transform 0.3s
+    }
+
+    body>iframe#redeviation-bs-sidebar.redeviation-bs-hideMask {
+      background: none !important
+    }
+
+    body>iframe#redeviation-bs-sidebar.redeviation-bs-hideMask:not(.redeviation-bs-hover) {
+      width: calc(350px + 50px)
+    }
+
+    body>iframe#redeviation-bs-overlay {
+      width: 100%;
+      max-width: none;
+      height: 100%;
+      z-index: 2147483647;
+      border: none;
+      speak: none;
+      background: rgba(0, 0, 0, 0.5) !important;
+      transition: opacity 0.3s
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="head">
+      <ul class="nav">
+        <li><a href="/user/index/1" class="nav-link" rel="nofollow">首页</a></li>
+      </ul>
+
+      <div class="loginbar">
+        
+        {% if username != "" %}
+            <a class="register" style="width:100px;">hello , {{username}}</a> <a class="in" href="/user/logout">退出</a>
+        {% else %}
+            <a class="register" style="width:100px;" href="/user/user_reg">注册</a> <a class="in" href="/user/user_login">登录</a>
+        {% endif %}
+        <div id="login_opacity_bg"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap clearfix">
+    <div id="main">
+
+      <div class="photo">
+        <div class="view">
+          <div class="photo-hd">
+            <h1>{{picture.title}}</h1>
+          </div>
+          <div class="photo-pic"><img src="{{picture.real_Path}}"
+              data-pic="/uploads/allimg/210423/224716-16191892361adb.jpg" alt="{{picture.title}}"
+              title="{{picture.title}}" onclick="showPicture('{{picture.real_Path}}')"></div>
+          <a href="https://zhutix.com/tag/win10-zhuti/" target="_blank">
+          </a>
+        </div><a href="https://zhutix.com/tag/win10-zhuti/" target="_blank">
+        </a>
+        <div class="side"><a href="https://zhutix.com/tag/win10-zhuti/" target="_blank">
+          </a>
+          <div class="downpic"><a href="{{picture.downloadurl}}" target="_blank"></a>
+            {% if username != "" %}
+            <a href="/user/download/{{picture.picture_id}}" data-id="27301">下载原图({{picture.size}})</a>
+          </div>
+          {% else %}
+          <a data-id="27301" onclick="layer.msg('未登录')">下载原图({{picture.size}})</a>
+        </div>
+        {% endif %}
+        <div class="infor">
+          <p>尺寸<span>{{picture.size}}</span></p>
+          <p>上传时间<span>{{picture.time}}</span></p>
+        </div>
+        <br>
+        {% if picture_last != None %}
+        <div class="downpic"><a href="{{picture_last.downloadurl}}" target="_blank"></a>
+          <a href="/user/show/{{picture_last.picture_id}}" data-id="27301">上一页</a>
+
+        </div>
+        <br>
+        <img src="{{picture_last.index_src}}" width="320" height="160" onclick="showPicture('{{picture_last.real_Path}}')">
+        <br>
+        {% else %}
+        <br>
+        {% endif %}
+        <br>
+        {% if picture_next != None %}
+        <div class="downpic"><a href="{{picture_next.downloadurl}}" target="_blank"></a>
+          <a href="/user/show/{{picture_next.picture_id}}" data-id="27301">下一页</a>
+
+        </div>
+        <br>
+        <img src="{{picture_next.index_src}}" width="320" height="160" onclick="showPicture('{{picture_next.real_Path}}')">
+        <br>
+        {% else %}
+        <br>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+
+
+  <div class="gotop">
+    <div class="bd">
+
+    </div>
+
+
+  </div>
+  </div>
+  <a href="javascript:;" class="btn-btn btn-top" style="display: none;"><i></i>顶部</a>
+  </div>
+
+  <script type="text/javascript" src="/static/user/user_show_picture/tb.js"></script>
+  <script src="/static/user/user_show_picture/ViewMore.php"></script>
+
+  <iframe id="redeviation-bs-sidebar" class="notranslate" aria-hidden="true" data-theme="default" data-pos="left"
+    src="/static/user/user_show_picture/saved_resource.html"></iframe>
+  <div id="redeviation-bs-indicator" data-theme="default" data-pos="left" class="redeviation-bs-visible"
+    style="height: 31%; top: 0%;">
+    <div><span></span></div>
+  </div>
+</body><iframe style="display:none;" src="/static/user/user_show_picture/downpic.html"></iframe><iframe
+  style="display:none;" src="/static/user/user_show_picture/downpic(1).html"></iframe>
+<script>
+  function showPicture(img) {
+
+    layer.photos({
+      photos: {
+        "title": "", //相册标题
+        "id": 'image_preview', //相册id
+        "start": 0, //初始显示的图片序号，默认0
+        "data": [   //相册包含的图片，数组格式
+          {
+            "alt": "",
+            "pid": 666, //图片id
+            "src": img, //原图地址
+            "thumb": img //缩略图地址
+          }
+        ]
+      }, //格式见API文档手册页
+      anim: 5, //0-6的选择，指定弹出图片动画类型，默认随机
+      shadeClose: true,
+      // skin: 'layui-layer-nobg',
+      shade: [0.5, '#000000'],
+      shadeClose: true,
+    });
+
+  }
+</script>
+
+</html>

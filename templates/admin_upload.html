@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>后台文件上传</title>
+
+<link href="/static/admin/jiaoben7071/layui/css/layui.css" rel="stylesheet">
+<link href="/static/admin/jiaoben7071/css/bootstrap.min.css" rel="stylesheet">
+<style>
+	.upload-btn {
+		width: 40px;
+		height: 100%;
+		cursor: pointer !important;
+		position: relative;
+		background: url("/static/admin/jiaoben7071/images/upload.png") no-repeat #007bff;
+		-webkit-background-size: cover;
+		background-size: cover;
+		border: 1px solid #ced4da;
+		border-left: none;
+		border-radius: 0 0.25rem 0.25rem 0;
+	}
+
+	.upload-btn .upload-img {
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		cursor: pointer !important;
+	}
+
+</style>
+<meta name="keywords" content="">
+<meta name="description"
+  content="aaa">
+<link href="/static/user/bizhi/style.css" rel="stylesheet" type="text/css">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<script src="/static/user/bizhi/hm.js"></script>
+<script src="/static/user/bizhi/hm.js"></script>
+<script type="text/javascript" src="/static/user/bizhi/jquery.min.js"></script>
+<script type="text/javascript" src="/static/user/bizhi/common.js"></script>
+<script src="/static/user/bizhi/jquery.SuperSlide.js"></script>
+<meta property="qc:admins" content="51744610136654211663757">
+<style class="redeviation-bs-style" data-name="content">
+  /*! (c) Philipp K&#246;nig under GPL-3.0 */
+  body>div#redeviation-bs-indicator>div {
+	opacity: 0;
+	pointer-events: none
+  }
+
+  body>iframe#redeviation-bs-sidebar.redeviation-bs-visible,
+  body>iframe#redeviation-bs-overlay.redeviation-bs-visible {
+	opacity: 1;
+	pointer-events: auto
+  }
+  
+  body.redeviation-bs-noscroll {
+	overflow: hidden !important
+  }
+  
+  body>div#redeviation-bs-indicator>div {
+	position: absolute;
+	transform: translate3d(-24px, 0, 0);
+	top: 0;
+	left: 0;
+	width: 24px !important;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	border-radius: 0 10px 10px 0;
+	transition: opacity 0.3s, transform 0.3s;
+	z-index: 2
+  }
+  
+  body>div#redeviation-bs-indicator>div>span {
+	-webkit-mask: no-repeat center/24px;
+	-webkit-mask-image: url(chrome-extension://jdbnofccmhefkmjbkkdkfiicjkgofkdh/img/icon-bookmark.svg);
+	background-color: #ffffff;
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%
+  }
+  
+  body>div#redeviation-bs-indicator[data-pos='right'] {
+	left: auto;
+	right: 0
+  }
+  
+  body>div#redeviation-bs-indicator[data-pos='right']>div {
+	transform: translate3d(24px, 0, 0);
+	left: auto;
+	right: 0;
+	border-radius: 10px 0 0 10px
+  }
+  
+  body>div#redeviation-bs-indicator.redeviation-bs-fullHeight>div {
+	border-radius: 0
+  }
+  
+  body>div#redeviation-bs-indicator.redeviation-bs-hover>div {
+	transform: translate3d(0, 0, 0);
+	opacity: 1
+  }
+  
+  body>div#redeviation-bs-indicator[data-pos='left'].redeviation-bs-has-lsb {
+	height: 100% !important;
+	top: 0 !important
+  }
+  
+  body>div#redeviation-bs-indicator[data-pos='left'].redeviation-bs-has-lsb>div {
+	background: transparent
+  }
+  
+  body>div#redeviation-bs-indicator[data-pos='left'].redeviation-bs-has-lsb>div>span {
+	-webkit-mask-position-y: 20px
+  }
+  
+  body>iframe#redeviation-bs-sidebar {
+	width: 350px;
+	max-width: none;
+	height: 0;
+	z-index: 2147483646;
+	background-color: rgba(0, 0, 0, 0.6) !important;
+	color-scheme: normal !important;
+	speak: none;
+	border: none;
+	display: block !important;
+	transform: translate3d(-350px, 0, 0);
+	transition: width 0s 0.3s, height 0s 0.3s, opacity 0.3s, transform 0.3s
+  }
+  
+  body>iframe#redeviation-bs-sidebar[data-pos='right'] {
+	left: auto;
+	right: 0;
+	transform: translate3d(350px, 0, 0)
+  }
+  
+  body>iframe#redeviation-bs-sidebar.redeviation-bs-visible {
+	width: calc(100% + 350px);
+	height: 100%;
+	transform: translate3d(0, 0, 0);
+	transition: opacity 0.3s, transform 0.3s
+  }
+  
+  body>iframe#redeviation-bs-sidebar.redeviation-bs-hideMask {
+	background: none !important
+  }
+  
+  body>iframe#redeviation-bs-sidebar.redeviation-bs-hideMask:not(.redeviation-bs-hover) {
+	width: calc(350px + 50px)
+  }
+  
+  body>iframe#redeviation-bs-overlay {
+	width: 100%;
+	max-width: none;
+	height: 100%;
+	z-index: 2147483647;
+	border: none;
+	speak: none;
+	background: rgba(0, 0, 0, 0.5) !important;
+	transition: opacity 0.3s
+  }
+</style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="head">
+          <ul class="nav">
+            <li><a href="/user/index/1" class="nav-link" rel="nofollow">网站首页</a></li>
+            <li><a href="/admin/uploadFile" class="nav-link" rel="nofollow">图片上传</a></li>
+            <li><a href="/admin/imageManager" class="nav-link" rel="nofollow">图片管理</a></li>
+          </ul>
+    
+          <div class="loginbar">
+            
+             <a class="in" href="/admin/logout">退出</a>
+          
+            <div id="login_opacity_bg"></div>
+          </div>
+        </div>
+      </div>
+
+
+<div class="container" id="app">
+<div class="row">
+	<div class="col-md-12">
+		<form class="" action="/admin/upload" method="POST">
+			<div class="card">
+				<div class="card-body">
+					<table class="table">
+						<thead>
+						<tr>
+							<th width="30%">名称</th>
+							<th width="50%">图片</th>
+							<th width="20%">操作</th>
+						</tr>
+						</thead>
+						<tbody id="tbody-items">
+						<tr v-for="(v,i) in items" class="tr-item">
+							<td>
+								<div class="input-group">
+									<input :id="'title' + (i + 1)" type="text" class="form-control" name="name" v-model="v.name">
+								</div>
+							</td>
+							<td>
+								<div class="row">
+									<div class="col-sm-10">
+										<div class="input-group" style="position: relative;">
+											<input type="text" class="form-control" name="pic" v-model="v.pic"
+												   readonly>
+											<img src="/static/admin/jiaoben7071/images/delete.png" height="20"
+												 style="position: absolute;cursor: pointer;top:-10px;right:38px;z-index:999;"
+												 @click="delImg(i)">
+											<div class="input-group-append">
+												<div class="upload-btn">
+													<input class="upload-img" type="file" name="file"
+														   @change="upload($event, i)">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-2 p-0">
+										<button type="button" class="btn btn-primary p-0 m-0">
+											<img class="preview-img" :id="'preview-img-' + (i + 1)"
+												 src="/static/admin/jiaoben7071/images/preview.png" height="36" :layer-src="v.pic"
+												 @click="previewImg(i)" title="点击预览">
+										</button>
+									</div>
+								</div>
+							</td>
+							<td>
+								<div class="input-group">
+									<button type="button" class="btn btn-secondary p-0 m-0 move-action mr-2"
+											style="cursor: move;">
+										<img src="/static/admin/jiaoben7071/images/move.png" height="36">
+									</button>
+									<button type="button" class="btn btn-danger" @click="del(i)">删除</button>
+								</div>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="ml-3 mb-3">
+					<button type="button" class="btn btn-primary" @click="add();">添加一项</button>
+				</div>
+				<!--
+				<textarea name="data" class="form-control" rows="8">{{items}}</textarea>
+				-->
+			</div>
+		</form>
+	</div>
+</div>
+</div>
+<script src="/static/admin/jiaoben7071/js/jquery.min.js"></script>
+<script src="/static/admin/jiaoben7071/layer/layer.js"></script>
+<script src="/static/admin/jiaoben7071/js/vue.js"></script>
+<script src="/static/admin/jiaoben7071/js/axios.js"></script>
+<script src="/static/admin/jiaoben7071/node_modules/sortablejs/Sortable.min.js"></script>
+<script>
+var app = new Vue({
+	el: '#app',
+	data: {
+		items: [],
+	},
+	updated() {
+		var _this = this;
+		var $tbody = _this.$el.querySelector('#tbody-items');
+		new Sortable($tbody, {
+			handle: '#tbody-items .move-action',
+			onUpdate: function (event) {
+				//修改items数据顺序
+				var newIndex = event.newIndex,
+					oldIndex = event.oldIndex,
+					$tr = $tbody.children[newIndex],
+					$oldTr = $tbody.children[oldIndex];
+				// 先删除移动的节点
+				$tbody.removeChild($tr);
+				// 再插入移动的节点到原有节点，还原了移动的操作
+				if (newIndex > oldIndex) {
+					$tbody.insertBefore($tr, $oldTr)
+				} else {
+					$tbody.insertBefore($tr, $oldTr.nextSibling)
+				}
+				// 更新items数组
+				var item = _this.items.splice(oldIndex, 1);
+				_this.items.splice(newIndex, 0, item[0]);
+			},
+			animation: 150,
+		})
+	},
+	mounted() {
+
+	},
+	methods: {
+		add() {
+			this.items.push({
+				name: '',
+				pic: '',
+			});
+		},
+		del(pos) {
+			this.items.splice(pos, 1);
+		},
+		upload(event, pos) {
+			let _this = this;
+			let file = event.target.files[0];
+			let fileSize = file.size;
+			let fileName = file.name;
+			let fileExt = fileName.substring(fileName.lastIndexOf(".") + 1);
+			let idd  = "title" + (pos + 1);
+            let title = document.getElementById(idd).value;
+            if(title == ""){
+                alert("填写第一项");
+                return 0;
+            }
+			try {
+				this.checkExt(fileExt);//检测文件后缀
+				this.checkSize(fileSize);//检测文件大小
+				let param = new FormData();
+                param.append("title", title);
+                param.append("csrf_token", "{{csrf_token()}}");
+				param.append("file", file);
+                
+				let config = {
+					headers: {"Content-Type": "multipart/form-data"}
+				};
+				axios.post('/admin/upload', param, config).then(function (res) {
+                    console.log(res)
+					if (res.data.code == 1) {
+						_this.items[pos].pic = res.data.file_url;
+                        layer.msg(res.data.msg);
+						// $('#preview-img-' + (parseInt(pos) + 1)).attr('layer-src', res.data.file_url);
+					} else {
+						layer.msg(res.data.msg);
+					}
+				}).catch(function (err) {
+					console.log(err);
+				});
+			} catch (err) {
+				layer.msg(err);
+			}
+		},
+		delImg(pos) {
+			this.items[pos].pic = '';
+		},
+		checkExt(ext) {
+			//上传图片格式
+			if (!['jpg', 'png', 'jpeg', 'gif', 'bmp'].includes(ext)) {
+				throw '上传图片格式不正确';
+			}
+		},
+		checkSize(size) {
+			//限制2M
+			if (size > 10000 * 1024) {
+				throw '上传图片大小不能超过10M';
+			}
+		},
+		previewImg(pos) {
+			let img = $('#preview-img-' + (parseInt(pos) + 1)).attr('layer-src');
+			if (!img) {
+				layer.msg('没有可以预览的图片');
+				return false;
+			}
+			layer.photos({
+				photos: {
+					"title": "", //相册标题
+					"id": 'image_preview', //相册id
+					"start": 0, //初始显示的图片序号，默认0
+					"data": [   //相册包含的图片，数组格式
+						{
+							"alt": "",
+							"pid": 666, //图片id
+							"src": img, //原图地址
+							"thumb": img //缩略图地址
+						}
+					]
+				}, //格式见API文档手册页
+				anim: 5, //0-6的选择，指定弹出图片动画类型，默认随机
+				shadeClose: true,
+				// skin: 'layui-layer-nobg',
+				shade: [0.5, '#000000'],
+				shadeClose: true,
+			});
+		}
+	}
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE HTML>
+<html lang="zxx">
+
+<head>
+	<title>Home</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- Meta tag Keywords -->
+	<!-- css files -->
+	<link rel="stylesheet" href="/static/user/css/style.css" type="text/css" media="all" />
+	<!-- Style-CSS -->
+	<link rel="stylesheet" href="/static/user/css/fontawesome-all.css">
+	<!-- Font-Awesome-Icons-CSS -->
+	<!-- //css files -->
+	<!-- web-fonts -->
+	<link href="http://maxcdn.bootstrapcdn.com/css?family=Josefin+Sans:100,100i,300,300i,400,400i,600,600i,700,700i"
+		rel="stylesheet">
+	<link href="http://maxcdn.bootstrapcdn.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+		rel="stylesheet">
+	<!-- //web-fonts -->
+	<link rel="stylesheet" type="text/css" href="/static/user/css/sweetalert.css">
+	<script type="text/javascript" src="/static/user/js/sweetalert-dev.js"></script>
+</head>
+
+<body>
+	<!-- bg effect -->
+	<div id="bg">
+		<canvas></canvas>
+		<canvas></canvas>
+		<canvas></canvas>
+	</div>
+	<style>
+		.hide {
+			color: red;
+			display: none;
+		}
+	</style>
+	<!-- //bg effect -->
+	<!-- title -->
+	<h1>用户注册</h1>
+	<!-- //title -->
+	<!-- content -->
+	<div class="sub-main-w3">
+		<form action="post" id="target1">
+			<h2>Register Now
+				<i class="fas fa-level-down-alt"></i>
+			</h2>
+			<div class="form-style-agile">
+				<label>
+					<i class="fas fa-user"></i>
+					用户名
+				</label>
+				<input placeholder="Username" name="username" type="text" required="" id="username">
+			</div>
+			<div class="form-style-agile">
+				<label>
+					<i class="fas fa-unlock-alt"></i>
+					密码
+				</label>
+				<input placeholder="Password" name="password" type="password" required="" id="password">
+			</div>
+			<div class="form-style-agile">
+				<label>
+					<i class="fas fa-unlock-alt"></i>
+					重复密码
+				</label>
+				<input placeholder="Password" name="repassword" type="password" required="" id="repassword">
+			</div>
+			<!-- checkbox -->
+			<div class="wthree-text">
+				<ul>
+					<li>
+						<p id="notice" class="hide">请先完成验证</p>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<label>&nbsp;&nbsp;</label>
+				<div id="captcha">
+					<p id="wait" class="show">正在加载验证码......</p>
+				</div>
+			</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<!-- //checkbox -->
+			<input type="submit" value="注册" id="submit">
+		</form>
+	</div>
+	<!-- //content -->
+
+	<!-- copyright -->
+	<!-- //copyright -->
+
+	<!-- Jquery -->
+	<script src="/static/user/js/jquery-3.3.1.min.js"></script>
+	<!-- //Jquery -->
+
+	<!-- effect js -->
+	<script src="/static/user/js/canva_moving_effect.js"></script>
+	<!-- //effect js -->
+
+	<script>
+		//校验密码强度
+		function checkPassWord(value) {
+			// 0： 表示第一个级别 1：表示第二个级别 2：表示第三个级别
+			// 3： 表示第四个级别 4：表示第五个级别
+			var modes = 0;
+			if (value.length < 6) {//最初级别
+				return modes;
+			}
+			if (/\d/.test(value)) {//如果用户输入的密码 包含了数字
+				modes++;
+			}
+			if (/[a-z]/.test(value)) {//如果用户输入的密码 包含了小写的a到z
+				modes++;
+			}
+			if (/[A-Z]/.test(value)) {//如果用户输入的密码 包含了大写的A到Z
+				modes++;
+			}
+			if (/\W/.test(value)) {//如果是非数字 字母 下划线
+				modes++;
+			}
+			switch (modes) {
+				case 1:
+					return 1;
+					break;
+				case 2:
+					return 2;
+					break;
+				case 3:
+					return 3;
+					break;
+				case 4:
+					return 4;
+					break;
+			}
+		}
+	</script>
+	<script>
+		$('#target1').submit(toReg);
+		function toReg() {
+			var username = document.getElementById("username").value;
+			var password = document.getElementById("password").value;
+			var repassword = document.getElementById("repassword").value;
+			if ($("input").length != 7) {
+				swal('', '验证码错误', "error")
+
+			} else {
+				var geetest_challenge = $("input")["3"].value;
+				var geetest_validate = $("input")["4"].value;
+				var geetest_seccode = $("input")["5"].value;
+
+			}
+
+			if (username == "" || password == "" || repassword == "") {
+				swal('', "用户名或密码为空", 'error')
+			} else {
+				if (checkPassWord(password) < 3) {
+					swal('', "密码强度不够 大小写数字符号", 'error')
+					setTimeout(function () {
+						window.location.reload();
+					}, 3000);
+					return false
+				} else {
+					$.ajax({
+						url: "/user/user_reg",
+						type: "POST",
+						contentType: "application/x-www-form-urlencoded;charset=utf-8",
+						data: {
+							'username': username, 'password': password, 'repassword': repassword, "csrf_token": '{{ csrf_token()}}',
+							"geetest_challenge": geetest_challenge,
+							"geetest_validate": geetest_validate,
+							"geetest_seccode": geetest_seccode
+						},
+						dataType: "text",
+						success: function (result) {
+							result = eval('(' + result + ')')
+							if (result.stat == 1) {
+								swal('', result.data, "success")
+								setTimeout(function () {
+									location.href = "/user/user_login"
+								}, 3000);
+
+							} else {
+								swal('', result.data, "error")
+								setTimeout(function () {
+									window.location.reload();
+								}, 5000);
+							}
+						},
+						error: function (msg) {
+							swal('', 'Error: 注册失败！', 'error')
+							setTimeout(function () {
+								window.location.reload();
+							}, 5000);
+						}
+					})
+				}
+			}
+			return false;
+		}
+
+	</script>
+
+	<!-- 引入 极验官方gt.js，使用其中提供的 initGeetest 初始化函数 -->
+	<script src="/static/code/js/gt.js"></script>
+
+	<script>
+		var handler = function (captchaObj) {
+			$("#submit").click(function (e) {
+				var result = captchaObj.getValidate();
+				if (!result) {
+					$("#notice").show();
+					setTimeout(function () {
+						$("#notice").hide();
+					}, 2000);
+					e.preventDefault();
+				}
+			});
+			// 将验证码加到id为captcha的元素里，同时会有三个input的值用于表单提交
+			captchaObj.appendTo("#captcha");
+			captchaObj.onReady(function () {
+				$("#wait").hide();
+			});
+		};
+		$.ajax({
+			url: "/code/register?t=" + (new Date()).getTime(), // 加随机数防止缓存
+			type: "get",
+			dataType: "json",
+			success: function (data) {
+				// 调用 initGeetest 初始化参数
+				// 参数1：配置参数
+				// 参数2：回调，回调的第一个参数验证码对象，之后可以使用它调用相应的接口
+				initGeetest({
+					gt: data.gt,
+					challenge: data.challenge,
+					new_captcha: data.new_captcha, // 用于宕机时表示是新验证码的宕机
+					offline: !data.success, // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+					product: "float", // 产品形式，包括：float，popup
+					width: "100%"
+				}, handler);
+			}
+		});
+	</script>
+</body>
+
+</html>
