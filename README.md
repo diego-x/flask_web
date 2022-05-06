@@ -1,2 +1,2 @@
 # flask_web
-花了两天凑出来的 flask  web
+花了两天凑出来的壁纸网站
